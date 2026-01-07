@@ -1,0 +1,50 @@
+static:
+  # YARA configuration
+  yara_rules_dir: "yara_rules"
+  yara_custom_dir: "yara_rules/custom"
+  
+  # Database
+  sqlite_path: "logs/incidents.db"
+  
+  # String analysis
+  max_strings: 200
+  min_string_len: 6
+  
+  # VirusTotal API (hash lookup only, no file upload)
+  # Get free API key at https://www.virustotal.com/gui/join
+  # Free limits: 4 requests/min, 500 requests/day
+  virustotal_enabled: true
+  virustotal_api_key: ""  # Set in .env as VIRUSTOTAL_API_KEY
+  virustotal_timeout: 25
+  vt_min_positives: 1
+  
+  # ClamAV configuration
+  # Install: sudo apt install clamav && sudo freshclam
+  clamav_unix_socket: "/var/run/clamav/clamd.ctl"
+  clamav_host: "127.0.0.1"
+  clamav_port: 3310
+  clamscan_bin: "clamscan"
+  
+  # Auto YARA rule generation
+  yara_auto_rule_enabled: true
+  yara_auto_rule_min_score: 50
+  
+  # Verdict thresholds
+  # CLEAN < 15, SUSPICIOUS 15-29, MALICIOUS >= 30
+  verdict:
+    clean: 15
+    suspicious: 30
+    malicious_threshold: 40  # legacy
+    suspicious_threshold: 20  # legacy
+
+scoring:
+  static:
+    yara_match: 10          # Per YARA rule match
+    clamav_infected: 30     # ClamAV detection
+    vt_malicious_high: 25   # VirusTotal > 5 detections
+    vt_malicious_low: 15    # VirusTotal 1-5 detections
+    suspicious_import: 5    # Per suspicious import found
+    packed: 10
+    source_ioc: 5
+    has_debug: -5
+    clean_bonus: 0

@@ -1,0 +1,24 @@
+# TBMI Sandbox - Dependencies
+# Динамический и статический анализ для Raspberry Pi
+
+# === Telegram Bot ===
+pyTelegramBotAPI>=4.14.0    # Telegram бот API
+python-dotenv>=1.0.0        # Загрузка .env
+
+# === Конфигурация ===
+PyYAML>=6.0                 # Парсинг patterns.yaml
+
+# === Динамический анализ ===
+hunter>=3.9.0               # Трейсинг Python кода
+psutil>=5.9.0               # Информация о процессах
+
+# === Статический анализ ===
+yara-python>=4.5.0          # YARA правила
+pyelftools>=0.32            # Парсинг ELF файлов
+requests>=2.31.0            # VirusTotal API
+
+# === Системные утилиты (установить через apt) ===
+# sudo apt install firejail    # Sandbox изоляция
+# sudo apt install tcpdump     # Сетевой мониторинг
+# sudo apt install clamav      # ClamAV сканер
+# sudo freshclam               # Обновление баз ClamAV

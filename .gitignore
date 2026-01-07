@@ -1,0 +1,57 @@
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment variables (contains secrets)
+.env
+.env.local
+.env.*.local
+
+# Logs and databases
+logs/
+*.log
+*.db
+
+# Downloads and user data
+downloads/
+
+# MITRE ATT&CK data (can be downloaded separately)
+mitre/
+
+# VM images
+vm_images/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# PDF and documents (not part of source)
+*.pdf
+*.rtf
+*.doc
+*.docx
+

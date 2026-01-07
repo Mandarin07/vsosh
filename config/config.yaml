@@ -1,0 +1,32 @@
+vm:
+  arm64_image: vm_images/debian-arm-snapshot.qcow2
+  x86_64_image: vm_images/debian-x86-snapshot.qcow2
+  timeout: 90
+
+bot_token: ""  # Set in .env as BOT_TOKEN
+allowed_chat_ids: []
+
+static:
+  yara_rules_dir: yara_rules/community
+  max_strings: 200
+  min_string_len: 6
+
+scoring:
+  dynamic:
+    network: 10
+    persistence: 5
+    exec: 5
+    file_drop: 5
+    crypto: 5
+    malicious_threshold: 30
+    suspicious_threshold: 15
+  static:
+    yara_match: 10
+    packed: 7
+    suspicious_import: 5
+    has_debug: -2
+    clean_bonus: -5
+
+code:
+  timeout: 30
+  enabled: true
